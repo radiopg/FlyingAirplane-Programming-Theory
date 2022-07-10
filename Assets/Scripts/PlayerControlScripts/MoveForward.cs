@@ -69,7 +69,7 @@ public class MoveForward : MonoBehaviour
         Debug.Log("Either Primary or Seconday Fire Hit Something!");
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
             Debug.Log("You Hit A Bullet");
         }
     }

@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour
     public float speed = 0.1f;
     private float rotationSpeed = 50.0f;
     private bool gameOver = false;
-    private bool canShoot = true;
+    private bool canShootPrimary = true;
+    private bool canShootSecondary = true;
     private float groundBoundX;
     private float groundBoundZ;
     private GameObject ground;
@@ -16,10 +17,13 @@ public class PlayerController : MonoBehaviour
     
 
     
-    public GameObject primaryFirePrefab;
-    public GameObject secondaryFirePrefab;
+    //public GameObject primaryFirePrefab;
+    //public GameObject secondaryFirePrefab;
     private Vector3 spawnPos;
     private Quaternion playerRotation;
+
+    private NormalBullet bulletPrimary;
+    private RemoteBullet bulletSecondary;
 
 
 
@@ -33,7 +37,8 @@ public class PlayerController : MonoBehaviour
         groundBoundZ = ground.GetComponent<Renderer>().bounds.size.z / 2;
         emptyGameObjInFrontOfPlayer = GameObject.FindGameObjectWithTag("GhostObjFrontOfPlayer");
 
-
+        bulletPrimary = GameObject.Find("SpawnForBullets").GetComponent<NormalBullet>();
+        bulletSecondary = GameObject.Find("SpawnForBullets").GetComponent<RemoteBullet>();
 
     }
 
@@ -107,16 +112,21 @@ public class PlayerController : MonoBehaviour
         spawnPos = emptyGameObjInFrontOfPlayer.transform.position;
         
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && canShootPrimary)
         {
+            bulletPrimary.Shoot(spawnPos);
+            canShootPrimary = false;
+            StartCoroutine("PrimaryCountDown");
             
-            Instantiate(primaryFirePrefab, spawnPos, primaryFirePrefab.transform.rotation);
         }
 
-        if (Input.GetKey(KeyCode.RightShift) && canShoot)
+        if (Input.GetKey(KeyCode.RightShift) && canShootSecondary)
         {
+
+            bulletSecondary.Shoot(spawnPos);
+            canShootSecondary = false;
+            StartCoroutine("SecondaryCountDown");
             
-            Instantiate(secondaryFirePrefab, spawnPos, secondaryFirePrefab.transform.rotation);
         }
         
     }
@@ -148,5 +158,34 @@ public class PlayerController : MonoBehaviour
     {
         gameOver = true;
         Debug.Log("Game Over! by Hitting Something.");
+    }
+
+    private IEnumerator PrimaryCountDown()
+    {
+        canShootPrimary = false;
+        float duration = 1.0f;
+        float normalizedTime = 0;
+        while (normalizedTime <= 1f)
+        {
+            normalizedTime += Time.deltaTime / duration;
+            yield return null;
+            
+        }
+        canShootPrimary = true;
+
+    }
+    private IEnumerator SecondaryCountDown()
+    {
+        canShootSecondary = false;
+        float duration = 5.0f;
+        float normalizedTime = 0;
+        while (normalizedTime <= 1f)
+        {
+            normalizedTime += Time.deltaTime / duration;
+            
+            yield return null;
+            
+        }
+        canShootSecondary = true;
     }
 }

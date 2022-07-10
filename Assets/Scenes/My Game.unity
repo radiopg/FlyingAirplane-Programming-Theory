@@ -564,6 +564,7 @@ GameObject:
   - component: {fileID: 1683755669}
   - component: {fileID: 1683755671}
   - component: {fileID: 1683755670}
+  - component: {fileID: 1683755672}
   m_Layer: 0
   m_Name: SpawnForBullets
   m_TagString: Untagged
@@ -599,9 +600,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1966805470432974018, guid: 5857beb7106154e8399cbd666c1b0a05, type: 3}
-  explosion: {fileID: 5202124440878355949, guid: 9126161dc72578c408b19875bc7ea578, type: 3}
   insideTrigger: 0
   speedOfBullet: 1000
+  explosion: {fileID: 5202124440878355949, guid: 9126161dc72578c408b19875bc7ea578, type: 3}
 --- !u!114 &1683755671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -615,9 +616,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 5957180870509552650, guid: ee0f5c67f19c143acbd08754e6b697ae, type: 3}
-  explosion: {fileID: 5202124440878355949, guid: 9126161dc72578c408b19875bc7ea578, type: 3}
   insideTrigger: 0
   speedOfBullet: 1000
+  explosion: {fileID: 5202124440878355949, guid: 9126161dc72578c408b19875bc7ea578, type: 3}
+--- !u!114 &1683755672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683755667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e405c2e6d8d33a48a911265c8aaa945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 0}
+  insideTrigger: 0
+  speedOfBullet: 25
+  explosion: {fileID: 0}
 --- !u!1001 &1685770582
 PrefabInstance:
   m_ObjectHideFlags: 0

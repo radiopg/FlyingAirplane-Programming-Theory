@@ -22,6 +22,20 @@ public class RemoteBullet : Bullets
 
     public override void Explode()
     {
-        
+        GameObject expl = Instantiate(explosion, transform.position, transform.rotation);
+
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 5f);
+
+        foreach (Collider nearbyObj in colliders)
+        {
+            Rigidbody rb = nearbyObj.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.AddExplosionForce(1400f, transform.position, 5f);
+            }
+        }
+
+        Destroy(gameObject);
+        Destroy(expl);
     }
 }

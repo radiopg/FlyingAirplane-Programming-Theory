@@ -22,6 +22,14 @@ public class RemoteBullet : Bullets
 
     public override void Explode()
     {
+        if (Input.GetKey(KeyCode.RightControl))
+        {
+            DontExplodeTilRightControlPressed();
+        }
+    }
+
+    public void DontExplodeTilRightControlPressed()
+    {
         GameObject expl = Instantiate(explosion, transform.position, transform.rotation);
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, 5f);

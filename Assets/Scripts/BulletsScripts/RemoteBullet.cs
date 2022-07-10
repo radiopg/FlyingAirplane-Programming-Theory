@@ -18,7 +18,7 @@ public class RemoteBullet : Bullets
         
     }
 
-    
+
 
     public override void Explode()
     {

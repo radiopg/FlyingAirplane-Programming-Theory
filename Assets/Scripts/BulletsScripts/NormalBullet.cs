@@ -20,6 +20,8 @@ public class NormalBullet : Bullets
         
     }
 
+
+
     public override void Explode()
     {
         GameObject expl = Instantiate(explosion, transform.position, transform.rotation);

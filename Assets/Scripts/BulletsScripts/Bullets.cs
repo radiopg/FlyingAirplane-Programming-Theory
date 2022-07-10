@@ -7,7 +7,7 @@ public class Bullets : MonoBehaviour
 
     public GameObject bulletPrefab;
     
-    public bool insideTrigger = false;
+    
     public float speedOfBullet = 25.0f;
 
 
@@ -66,6 +66,8 @@ public class Bullets : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+
 
     public void Shoot(Vector3 spawnPos)
     {

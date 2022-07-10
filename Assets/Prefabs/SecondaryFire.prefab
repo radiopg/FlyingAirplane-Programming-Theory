@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7487250577433349476}
   - component: {fileID: 4955562708870672585}
   - component: {fileID: 3109014962619922463}
-  - component: {fileID: 4004080644630298341}
   - component: {fileID: -8850657125131378804}
   - component: {fileID: -9013265472135669973}
+  - component: {fileID: 8037912586098789704}
   m_Layer: 0
   m_Name: SecondaryFire
   m_TagString: Untagged
@@ -87,18 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4004080644630298341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1966805470432974018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b6e77a868b7d4a1aa6040482bde4f90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &-8850657125131378804
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -107,7 +95,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1966805470432974018}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.29434654, y: 0.29434955, z: 1}
@@ -128,6 +116,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8037912586098789704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966805470432974018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b6e77a868b7d4a1aa6040482bde4f90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 5202124440878355949, guid: 9126161dc72578c408b19875bc7ea578, type: 3}
 --- !u!1001 &6399887396917499040
 PrefabInstance:
   m_ObjectHideFlags: 0

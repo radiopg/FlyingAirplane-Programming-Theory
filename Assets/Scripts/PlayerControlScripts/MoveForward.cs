@@ -11,8 +11,12 @@ public class MoveForward : MonoBehaviour
     private float groundBoundY;
     private GameObject playerObj;
     private PlayerController playerSpeed;
-    private float speed = 10.0f;
-    
+    private float speed = 50.0f;
+
+    public GameObject explosion;
+    private float radiusOfExplosion = 5.0f;
+    private float force = 700f;
+
 
 
     // Start is called before the first frame update
@@ -69,8 +73,43 @@ public class MoveForward : MonoBehaviour
         Debug.Log("Either Primary or Seconday Fire Hit Something!");
         if (collision.gameObject.CompareTag("Player"))
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
             Debug.Log("You Hit A Bullet");
         }
+
+        if(gameObject.name == "PrimaryFire")
+        {
+            force = 700.0f;
+        }
+        else if(gameObject.name == "SecondaryFire")
+        {
+            force = 1400.0f;
+        }
+
+        
+        Explode();
+        
+
+        
+    }
+
+    void Explode()
+    {
+        GameObject expl = Instantiate(explosion, transform.position, transform.rotation);
+
+        Collider[] colliders = Physics.OverlapSphere(transform.position, radiusOfExplosion);
+
+        foreach(Collider nearbyObj in colliders)
+        {
+            Rigidbody rb = nearbyObj.GetComponent<Rigidbody>();
+            if(rb != null)
+            {
+                rb.AddExplosionForce(force, transform.position, radiusOfExplosion);
+            }
+        }
+
+        Destroy(gameObject);
+        Destroy(expl);
+        
     }
 }
